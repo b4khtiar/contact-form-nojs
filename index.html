@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Frontend Mentor | Contact form</title>
+  <meta name="description" content="Contact form with html only validation">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main>
+    <form class="contact__form">
+      <h1>Contact Us</h1>
+      <div class="field__group">
+        <div class="field">
+          <label for="first-name">First name *</label>
+          <input required type="text" id="first-name" name="first-name">
+          <small id="first-name-helper" class="helper-text">Please enter your first name</small>
+        </div>
+        <div class="field">
+          <label for="last-name">Last name *</label>
+          <input required type="text" id="last-name" name="last-name">
+          <small id="last-name-helper" class="helper-text">Please enter your last name</small>
+        </div>
+      </div>
+      <div class="field">
+        <label for="email">Email address *</label>
+        <input required type="email" id="email" name="email">
+        <small id="email-helper" class="helper-text">Please enter a valid email address</small>
+      </div>
+      <fieldset>
+        <legend>Query type *</legend>
+        <div class="field-select">
+          <input required type="radio" id="general-enquiry" name="query-type" value="general-enquiry">
+          <label for="general-enquiry" class="radio-label">General Enquiry</label>
+        </div>
+        <div class="field-select">
+          <input required type="radio" id="support-request" name="query-type" value="support-request">
+          <label for="support-request" class="radio-label">Support Request</label>
+        </div>
+        <small id="query-type-helper" class="helper-text">Please select a query type</small>
+      </fieldset>
+      <div class="field">
+        <label for="message">Message *</label>
+        <textarea required id="message" name="message" rows="5"></textarea>
+        <small id="message-helper" class="helper-text">Please enter a message</small>
+      </div>
+      <div class="field">
+        <div class="field-select">
+          <input required type="checkbox" id="consent" name="consent">
+          <label for="consent" class="checkbox-label">I consent to being contacted by the team</label>
+        </div>
+        <small id="consent-helper" class="helper-text">To submit this form, please consent to being contacted</small>
+      </div>
+      <div class="field">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </main>
+  <dialog>
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" fill="none" viewBox="0 0 20 21">
+        <path fill="#fff"
+          d="M14.28 7.72a.748.748 0 0 1 0 1.06l-5.25 5.25a.748.748 0 0 1-1.06 0l-2.25-2.25a.75.75 0 1 1 1.06-1.06l1.72 1.72 4.72-4.72a.75.75 0 0 1 1.06 0Zm5.47 2.78A9.75 9.75 0 1 1 10 .75a9.76 9.76 0 0 1 9.75 9.75Zm-1.5 0A8.25 8.25 0 1 0 10 18.75a8.26 8.26 0 0 0 8.25-8.25Z" />
+      </svg>
+      <h3>Message Sent !</h3>
+    </div>
+    <p>
+      Thanks for completing the form. We'll be in touch soon!
+    </p>
+  </dialog>
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+    Coded by <a href="https://github.com/b4khtiar">Y.Bakhtiar</a>.
+  </footer>
+
+  <script>
+    const dialog = document.querySelector('dialog');
+    const form = document.querySelector('form');
+    const submit = document.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      dialog.showModal();
+      form.reset();
+
+      setInterval(() => {
+        dialog.close();
+      }, 5000);
+    });
+  </script>
+</body>
+
+</html>
